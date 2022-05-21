@@ -1,110 +1,59 @@
-<div  [ngClass]="selectedCard=='card1'?['parent', 'op']:'parent'">
-  <div class="child1">
-      <h3 class="heading">Portfolio Overview</h3>
-  </div>
-  <div class="child2">
-      <div class="child2-first">
-          <div [ngClass]="selected=='user'?'user':'prev1'" (click)="onSubmit('user')">
-              <i class="fa-solid fa-user"></i>
-          </div>
-          <div class="line">
-
-          </div>
-          <div [ngClass]="selected=='rupee'?['rupee','user']:'prev2' " (click)="onSubmit('rupee')">
-              <span rupee-symbol>&#8377; </span>
-          </div>
-          <div class="per-line">
-              <span>By Amount </span>
-          </div>
-      </div>
-      <div class="child2-second">
-          <div class="card card1" (click)="selectedCard='card1'">
-              <img src="https://clearmydues.com/ethera/assets/images/icons/export.svg" alt="" class="card-img1">
-              <span class="card-text1">Export Master Report</span>
-          </div>
-         
-
-          <div class="card" (mouseover)="selectedCard='card2'" (mouseleave)="selectedCard=''">
-              <div class="card2">
-                  <span class="card-text2">{{selectedInCard2}}</span>
-                  <span class="font"><i class="fa-solid fa-chevron-down"></i></span>
-              </div>
-             
-              <div class="card2-child" *ngIf="selectedCard=='card2'" >
-                  <a *ngFor="let card of card2" (click)="selectedInCard2=card">
-                      <span [ngClass]="selectedInCard2==card?'card-text2':'white'">{{card}}</span>
-                      <span [ngClass]="selectedInCard2==card?['right', 'yellow']:'right'"><i class="fa-solid fa-chevron-right"></i></span>
-                  </a>
-              </div>
-          </div>
-
-
-          <div class="card" (mouseover)="selectedCard='card3'" (mouseleave)="selectedCard=''">
-              <div class="card3">
-                  <span class="card-text2" *ngFor="let card of selectedInCard3">{{card+", "}}</span>
-                  <span class="font font2"><i class="fa-solid fa-chevron-down"></i></span>
-              </div>
-          
-              <div class="card2-child card3-child" *ngIf="selectedCard=='card3'" >
-                  <label *ngFor="let card of card3" (click)="changeSelectCard3(card)" class="checkbox">
-                      <input type="checkbox" checked>
-                      <span class="checkbox-in" [ngClass]="isContain(card)?'card-text2':'white'">{{card}}</span>
-                      <span [ngClass]="isContain(card)?['right', 'yellow', 'right-card3']:['right', 'right-card3']"><i class="fa-solid fa-chevron-right"></i></span>
-                  </label>
-              </div>
-
-          </div>
-          <div class="card" (mouseover)="selectedCard='card4'" (mouseleave)="selectedCard=''">
-              <div class="card4">
-                  <span class="card-text2">{{selectedInCard4}}</span>
-                  <span class=" font font3"><i class="fa-solid fa-chevron-down"></i></span>
-              </div>
-              <div class="card2-child card4-child" *ngIf="selectedCard=='card4'">
-                  <a *ngFor="let card of card4" (click)="selectedInCard4=card">
-                      <span [ngClass]="selectedInCard4==card?'card-text2':'white'">{{card}}</span>
-                      <span [ngClass]="selectedInCard4==card?['right', 'yellow', 'right-card4']:['right','right-card4']"><i class="fa-solid fa-chevron-right"></i></span>
-                  </a>
-              </div>
-
-          </div>
-      </div>
-  </div>
-  <div class="child3">
-      <div class="loan-info" *ngFor="let detail of cardDetails">
-          <div class="info-icon">
-              <img class="logo" src={{detail.src}} alt="">
-          </div>
-          <div class="info-text">
-              <p class="info-title">
-                  <span>
-                      {{detail.heading}}
-                  </span>
-                  <span>
-                      <img class="info-logo" src={{detail.info}} alt="">
-                  </span>
-              </p>
-              <div class="lower-info">
-                  <span>
-                      <a *ngIf="selected=='user'" href="">{{detail.lac}}</a>
-                      <a *ngIf="selected=='rupee'">{{detail.crore}}</a>
-                  </span>
-                  <span class="percent">
-                     {{detail.per}}
-                  </span>
-              </div>
-          </div>
-      </div>
-  </div>
+<div class="navbar">
+    <ul class="nav-ul">
+        <li class="nav-li">
+            <img src="assets/rectangle.png" alt="" class="li-img">
+        </li>
+        <li class="nav-li" (click)="selectedComponent=''"  >
+            <img src="assets/home_menu.png" alt="" class="li-img">
+            <p class="text">Home</p>
+        </li>
+        <li class="nav-li" (click)="selectedComponent='comp2'">
+            <img src="assets/collections.png" alt="" class="li-img">
+            <p class="text">Collections</p>
+        </li>
+        <li class="nav-li" (click)="selectedComponent='comp3'">
+            <img src="assets/recovery.png" alt="" class="li-img">
+            <p class="text">Recovery</p>
+        </li>
+        <li class="nav-li" (click)="selectedComponent='comp4'">
+            <img src="assets/compiegn.png" alt="" class="li-img">
+            <p class="text">Compaign</p>
+        </li>
+        <li class="nav-li" (click)="selectedComponent='comp5'">
+            <img src="assets/product.png" alt="" class="li-img">
+            <p class="text">Product</p>
+        </li>
+        <li class="nav-li" (click)="selectedComponent='comp6'">
+            <img src="assets/queries.png" alt="" class="li-img">
+            <p class="text">Queries</p>
+        </li>
+        <li class="nav-li" (click)="selectedComponent='comp7'">
+            <img src="assets/userManager.png" alt="" class="li-img">
+            <p class="text">User Manager </p>
+        </li>
+    
+    </ul>
 </div>
-<div class="card1-click" *ngIf="selectedCard=='card1'">
-  <div class="card1-click-content">
-    <img src="https://clearmydues.com/ethera/assets/images/icons/timer.svg" alt="" class="search">
-  </div>
-  <div class="card1-click-content">
-      Your report is being generated.
-      Download link for the report will be mailed to you on your registered email id within 24 hours.
-  </div>
-  <div class="card1-click-content">
-      <button class="card1-click-btn" (click)="selectedCard=''"> Ok </button>
-  </div>
+
+<router-outlet></router-outlet>
+<div class="after-working" *ngIf="selectedComponent=='comp1'">
+<h1>Home is Working</h1>
+</div>
+<div class="after-working" *ngIf="selectedComponent=='comp2'">
+    <h1>Collection is Working</h1>
+</div>
+<div class="after-working" *ngIf="selectedComponent=='comp3'">
+    <h1>Recovery is Working</h1>
+</div>
+<div class="after-working" *ngIf="selectedComponent=='comp4'">
+    <h1>Compaign is Working</h1>
+</div>
+<div class="after-working" *ngIf="selectedComponent=='comp5'">
+    <h1>Product is Working</h1>
+</div>
+<div class="after-working" *ngIf="selectedComponent=='comp6'">
+    <h1>Queris is Working</h1>
+</div>
+<div class="after-working" *ngIf="selectedComponent=='comp7'">
+    <h1>User Manager is Working</h1>
 </div>
